@@ -2,10 +2,13 @@ import Image from 'next/image';
 import { resumeData } from '../../data/resume';
 import styles from './page.module.css';
 
+
 export default function ResumePage() {
   const { profile, introduction, education, career, projects, skills, closing } =
-    resumeData;
-
+  resumeData;
+  
+  const basePath = process.env.NEXT_PUBLIC_BASE_PATH ?? '';
+  
   return (
     <main className={styles.page}>
       <header className={styles.hero}>
@@ -87,7 +90,7 @@ export default function ResumePage() {
           <article className={styles.careerCard}>
             <div className={styles.careerHeader}>
               <Image
-                src={'${basePath}${career.logo}'}
+                src={`${basePath}${career.logo}`}
                 alt={`${career.company} 로고`}
                 width={200}
                 height={74}
