@@ -30,7 +30,7 @@ export default function ResumePage() {
 
           <div className={styles.profileImageWrap}>
             <Image
-              src={profile.image}
+              src={`${basePath}${profile.image}`}
               alt={`${profile.name} 프로필 사진`}
               width={420}
               height={520}

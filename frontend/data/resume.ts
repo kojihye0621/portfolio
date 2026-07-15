@@ -59,7 +59,7 @@ export const resumeData = {
     team: '개발팀',
     position: '사원',
     period: '2023.02 ~ 2025.10',
-    logo: '/images/profile.jpeg',
+    logo: '/images/next-solution.png',
     responsibilities: [
       {
         title: '솔루션 유지보수',
