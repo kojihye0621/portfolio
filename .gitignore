@@ -1,0 +1,36 @@
+cat << 'EOF' > .gitignore
+# Node & Dependencies 
+# 자동으로 다운로드 되는 외부 라이브러리가 담긴 폴더라 용량 관련 문제가 있어서 git에 올리지 않음
+node_modules/
+npm-debug.log
+yarn-error.log
+
+# VS CODE 관련 파일은 git에 올릴 필요가 없음
+.vscode/
+
+# Mac OS 관련 오류 불러일으킬 수 있는 파일이라 올리지 않음
+.DS_Store
+
+# Windows 관련 미리보기 캐시나 휴지통 시스템 파일
+Thumbs.db
+ehthumbs.db
+$RECYCLE.BIN/
+
+# Environment Variables
+# 환경 설정은 보안 관련 내용이 많아 git에 올리지 않음
+.env
+.env.local
+.env.development
+.env.production
+
+# Build outputs
+# 컴파일러? 같은 거라 올릴 필요 없음
+dist/
+.next/
+out/
+build/
+EOF
+
+git add .
+git commit -m "chore: 프로젝트 초기 세팅 (Next.js & NestJS)"
+git status
