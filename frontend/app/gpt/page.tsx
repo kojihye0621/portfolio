@@ -87,7 +87,7 @@ export default function ResumePage() {
           <article className={styles.careerCard}>
             <div className={styles.careerHeader}>
               <Image
-                src={career.logo}
+                src={'${basePath}${career.logo}'}
                 alt={`${career.company} 로고`}
                 width={200}
                 height={74}
