@@ -26,7 +26,7 @@ export const resumeData = {
     phone: 'REMOVED',
     email: 'kojihye0621@gmail.com',
     location: '서울특별시 동작구',
-    image: '/images/profile.jpeg',
+    image: 'frontend/public/images/profile.jpeg',
   },
 
   introduction: {
@@ -59,7 +59,7 @@ export const resumeData = {
     team: '개발팀',
     position: '사원',
     period: '2023.02 ~ 2025.10',
-    logo: '/images/next-solution.png',
+    logo: 'frontend/public/images/profile.jpeg',
     responsibilities: [
       {
         title: '솔루션 유지보수',
