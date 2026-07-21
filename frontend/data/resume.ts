@@ -135,7 +135,7 @@ export const resumeData = {
         'Tailwind CSS',
         'Git',
       ],
-      links: [{ label: 'bizking.com', href: 'https://bizking.com/' }],
+      // links: [{ label: 'bizking.com', href: 'https://bizking.com/' }], 서비스 종료된 듯
     },
     {
       title: 'PHP 쇼핑몰 솔루션 운영관리 및 유지보수',
