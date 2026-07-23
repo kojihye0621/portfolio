@@ -53,6 +53,16 @@ export const resumeData = {
     },
   ],
 
+  certifications: [
+    {
+      name : '정보처리기사',
+      status: '필기 합격',
+      // acquiredAt: '',
+      // expiresAt: '',
+      memo : '실기 응시 예정'
+    },
+  ],
+  
   career: {
     company: '넥스트솔루션',
     previousName: '구 후이즈글로벌네트워크',

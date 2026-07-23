@@ -2,7 +2,7 @@ import Image from 'next/image';
 import { resumeData } from '../data/resume';
 
 export default function ResumePage() {
-  const { profile, introduction, education, career, projects, skills, closing } =
+  const { profile, introduction, education, certifications, career, projects, skills, closing } =
     resumeData;
 
   const basePath = process.env.NEXT_PUBLIC_BASE_PATH ?? '';
@@ -101,9 +101,12 @@ export default function ResumePage() {
           </div>
 
           <div>
-            <h3 className="mb-5 text-sm font-semibold uppercase tracking-[0.14em] text-slate-400">
+            <div className='mb-5 flex items-center'>
+            <h2 className=" text-2xl font-bold ">학력</h2>
+            <h3 className="ml-2 text-sm font-semibold uppercase tracking-[0.14em] text-slate-400">
               Education
             </h3>
+            </div>
 
             <div className="divide-y divide-slate-200 border-y border-slate-200">
               {education.map((item) => (
@@ -121,6 +124,34 @@ export default function ResumePage() {
                   </div>
 
                   <span className="text-sm text-slate-400">{item.period}</span>
+                </article>
+              ))}
+            </div>
+          </div>
+          <div>
+            <div className='mb-5 flex items-center'>
+            <h2 className=" text-2xl font-bold ">자격증</h2>
+            <h3 className="ml-2 text-sm font-semibold uppercase tracking-[0.14em] text-slate-400">
+              Certifications
+            </h3>
+            </div>
+
+            <div className="divide-y divide-slate-200 border-y border-slate-200">
+              {certifications.map((item) => (
+                <article
+                  className="flex flex-col justify-between gap-3 py-6 sm:flex-row sm:items-start"
+                  key={item.name}
+                >
+                  <div>
+                     <strong className="text-lg text-slate-950">
+                      {item.name}
+                    </strong>
+                    <p className="mt-1 text-slate-500">
+                      {item.memo}
+                    </p>
+                  </div>
+
+                  <span className="text-sm text-slate-600">{item.status}</span>
                 </article>
               ))}
             </div>
@@ -222,9 +253,6 @@ export default function ResumePage() {
                       <h3 className="text-2xl font-bold tracking-tight text-slate-950">
                         {project.title}
                       </h3>
-                      <p className="mt-3 max-w-2xl leading-7 text-slate-500">
-                        {project.summary}
-                      </p>
                     </div>
 
                     {project.links && (
@@ -242,7 +270,11 @@ export default function ResumePage() {
                         ))}
                       </div>
                     )}
+                    
                   </div>
+                  <p className="mt-3 max-w-2xl leading-7 text-slate-500">
+                        {project.summary}
+                      </p>
 
                   <div className="mt-10 grid gap-5 lg:grid-cols-2">
                     {project.details.map((detail) => (
@@ -351,6 +383,7 @@ export default function ResumePage() {
         </div>
       </section>
 
+{/* 차후 위치 수정 필 */}
       <footer className="flex flex-col items-center justify-between gap-3 border-t border-slate-800 bg-slate-950 px-6 py-8 text-sm text-slate-400 sm:flex-row sm:px-10 lg:px-12">
         <p className="font-semibold text-white">{profile.name}</p>
 
