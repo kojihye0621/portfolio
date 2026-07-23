@@ -68,7 +68,7 @@ export const resumeData = {
     previousName: '구 후이즈글로벌네트워크',
     team: '개발팀',
     position: '사원',
-    period: '2023.02 ~ 2025.10',
+    period: '2023.02 ~ 2025.12',
     logo: '/images/next-solution.png',
     responsibilities: [
       {
