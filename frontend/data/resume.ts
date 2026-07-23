@@ -140,7 +140,7 @@ export const resumeData = {
     {
       title: 'PHP 쇼핑몰 솔루션 운영관리 및 유지보수',
       summary: 'PHP 기반 자체 쇼핑몰 솔루션 유지보수 및 운영관리',
-      period: '2023.02 ~ 진행 중',
+      period: '2023.02 ~ 2025.12',
       details: [
         {
           title: '운영 및 장애 대응',
@@ -241,7 +241,7 @@ export const resumeData = {
     {
       title: 'AKMRO 솔루션 유지보수',
       summary: 'AKMRO 사내 그룹웨어 시스템과 연동된 폐쇄형 쇼핑몰',
-      period: '2024.04 ~ 진행 중',
+      period: '2024.04 ~ 2025.12',
       details: [
         {
           title: '운영 및 시스템 전환',
@@ -259,7 +259,7 @@ export const resumeData = {
     {
       title: '홈페이지 구축 및 유지보수',
       summary: '기업·기관 사이트의 검색, 지도, 차트 및 설문 기능 개발',
-      period: '2024.03 ~ 진행 중',
+      period: '2024.03 ~ 2025.12',
       details: [
         {
           title: '종근당 상품 홍보 사이트',
