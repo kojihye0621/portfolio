@@ -1,217 +1,331 @@
 import Image from 'next/image';
 import { resumeData } from '../data/resume';
-import styles from './page.module.css';
-
 
 export default function ResumePage() {
   const { profile, introduction, education, career, projects, skills, closing } =
-  resumeData;
-  
-  const basePath = process.env.NEXT_PUBLIC_BASE_PATH ?? '';
-  
-  return (
-    <main className={styles.page}>
-      <header className={styles.hero}>
-        <div className={styles.heroInner}>
-          <div className={styles.profileCopy}>
-            <p className={styles.role}>{profile.role}</p>
-            <h1 className={styles.name}>{profile.name}</h1>
-            <p className={styles.heroMessage}>{introduction.title}</p>
+    resumeData;
 
-            <div className={styles.contactList}>
-              <a href={`mailto:${profile.email}`}>{profile.email}</a>
-              <a href={`tel:${profile.phone.replaceAll('-', '')}`}>
-                {profile.phone}
-              </a>
-              <span>{profile.location}</span>
-              <span>{profile.birth}</span>
+  const basePath = process.env.NEXT_PUBLIC_BASE_PATH ?? '';
+
+  return (
+    <main className="min-h-screen bg-white text-slate-900">
+      <header className="border-b border-slate-200">
+        <div className="mx-auto grid min-h-[720px] max-w-6xl items-center gap-12 px-6 py-20 md:grid-cols-[1fr_380px] md:px-10 lg:px-12">
+          <div>
+            <p className="mb-5 text-sm font-semibold uppercase tracking-[0.18em] text-slate-500">
+              {profile.role}
+            </p>
+
+            <h1 className="text-5xl font-bold tracking-[-0.05em] text-slate-950 sm:text-6xl lg:text-7xl">
+              {profile.name}
+            </h1>
+
+            <p className="mt-8 max-w-2xl text-xl leading-9 text-slate-600 sm:text-2xl">
+              {introduction.title}
+            </p>
+
+            <div className="mt-10 flex flex-col gap-3 text-sm text-slate-600">
+              <div className="flex flex-wrap gap-x-4">
+                <span className="w-20 font-semibold text-slate-900">Email</span>
+                <a
+                  href={`mailto:${profile.email}`}
+                  className="underline-offset-4 transition hover:text-slate-950 hover:underline"
+                >
+                  {profile.email}
+                </a>
+              </div>
+
+              <div className="flex flex-wrap gap-x-4">
+                <span className="w-20 font-semibold text-slate-900">
+                  Address
+                </span>
+                <span>{profile.location}</span>
+              </div>
+
+              <div className="flex flex-wrap gap-x-4">
+                <span className="w-20 font-semibold text-slate-900">Birth</span>
+                <span>{profile.birth}</span>
+              </div>
             </div>
           </div>
 
-          <div className={styles.profileImageWrap}>
+          <div className="mx-auto w-full max-w-[380px] overflow-hidden rounded-3xl bg-slate-100 md:mx-0">
             <Image
               src={`${basePath}${profile.image}`}
               alt={`${profile.name} 프로필 사진`}
               width={420}
               height={520}
-              className={styles.profileImage}
+              className="h-auto w-full object-cover"
               priority
             />
           </div>
         </div>
       </header>
 
-      <nav className={styles.navigation} aria-label="이력서 영역 이동">
-        <div className={styles.navigationInner}>
-          <a href="#about">소개</a>
-          <a href="#career">경력</a>
-          <a href="#projects">프로젝트</a>
-          <a href="#skills">기술</a>
+      <nav
+        className="sticky top-0 z-20 border-b border-slate-200 bg-white/90 backdrop-blur"
+        aria-label="이력서 영역 이동"
+      >
+        <div className="mx-auto flex max-w-6xl gap-6 overflow-x-auto px-6 py-4 text-sm font-semibold text-slate-500 md:px-10 lg:px-12">
+          <a href="#about" className="whitespace-nowrap hover:text-slate-950">
+            소개
+          </a>
+          <a href="#career" className="whitespace-nowrap hover:text-slate-950">
+            경력
+          </a>
+          <a href="#projects" className="whitespace-nowrap hover:text-slate-950">
+            프로젝트
+          </a>
+          <a href="#skills" className="whitespace-nowrap hover:text-slate-950">
+            기술
+          </a>
         </div>
       </nav>
 
-      <section className={styles.section} id="about">
-        <div className={styles.sectionHeading}>
-          <p className={styles.sectionLabel}>About</p>
-          <h2>소개</h2>
+      <section
+        className="mx-auto grid max-w-6xl gap-10 border-b border-slate-200 px-6 py-24 md:grid-cols-[200px_1fr] md:px-10 lg:px-12"
+        id="about"
+      >
+        <div>
+          <p className="text-sm font-semibold uppercase tracking-[0.18em] text-slate-400">
+            About
+          </p>
+          <h2 className="mt-3 text-3xl font-bold tracking-tight">소개</h2>
         </div>
 
-        <div className={styles.sectionContent}>
-          <div className={styles.introduction}>
+        <div className="space-y-14">
+          <div className="max-w-3xl space-y-5 text-lg leading-8 text-slate-600">
             {introduction.paragraphs.map((paragraph) => (
               <p key={paragraph}>{paragraph}</p>
             ))}
           </div>
 
-          <div className={styles.educationBlock}>
-            <h3>Education</h3>
-            {education.map((item) => (
-              <article className={styles.educationItem} key={item.school}>
+          <div>
+            <h3 className="mb-5 text-sm font-semibold uppercase tracking-[0.14em] text-slate-400">
+              Education
+            </h3>
+
+            <div className="divide-y divide-slate-200 border-y border-slate-200">
+              {education.map((item) => (
+                <article
+                  className="flex flex-col justify-between gap-3 py-6 sm:flex-row sm:items-start"
+                  key={item.school}
+                >
+                  <div>
+                    <strong className="text-lg text-slate-950">
+                      {item.school}
+                    </strong>
+                    <p className="mt-1 text-slate-500">
+                      {item.major} · {item.status}
+                    </p>
+                  </div>
+
+                  <span className="text-sm text-slate-400">{item.period}</span>
+                </article>
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section
+        className="mx-auto grid max-w-6xl gap-10 border-b border-slate-200 px-6 py-24 md:grid-cols-[200px_1fr] md:px-10 lg:px-12"
+        id="career"
+      >
+        <div>
+          <p className="text-sm font-semibold uppercase tracking-[0.18em] text-slate-400">
+            Career
+          </p>
+          <h2 className="mt-3 text-3xl font-bold tracking-tight">경력</h2>
+        </div>
+
+        <article className="overflow-hidden rounded-3xl border border-slate-200 bg-white">
+          <div className="grid gap-6 border-b border-slate-200 p-7 sm:grid-cols-[140px_1fr_auto] sm:items-center">
+            <Image
+              src={`${basePath}${career.logo}`}
+              alt={`${career.company} 로고`}
+              width={200}
+              height={74}
+              className="h-auto max-h-16 w-auto max-w-[140px] object-contain object-left"
+            />
+
+            <div>
+              <h3 className="text-2xl font-bold text-slate-950">
+                {career.company}
+              </h3>
+              <p className="mt-1 text-sm text-slate-400">
+                {career.previousName}
+              </p>
+              <strong className="mt-3 block text-sm font-semibold text-slate-700">
+                {career.team} · {career.position}
+              </strong>
+            </div>
+
+            <p className="text-sm text-slate-400 sm:text-right">
+              {career.period}
+            </p>
+          </div>
+
+          <div className="grid gap-5 p-7 lg:grid-cols-2">
+            {career.responsibilities.map((responsibility) => (
+              <div
+                className="rounded-2xl bg-slate-50 p-6"
+                key={responsibility.title}
+              >
+                <h4 className="text-lg font-bold text-slate-950">
+                  {responsibility.title}
+                </h4>
+
+                <ul className="mt-4 list-disc space-y-2 pl-5 text-sm leading-6 text-slate-600 marker:text-slate-300">
+                  {responsibility.items.map((item) => (
+                    <li key={item}>{item}</li>
+                  ))}
+                </ul>
+              </div>
+            ))}
+          </div>
+        </article>
+      </section>
+
+      <section
+        className="mx-auto max-w-6xl border-b border-slate-200 px-6 py-24 md:px-10 lg:px-12"
+        id="projects"
+      >
+        <div className="grid gap-10 md:grid-cols-[200px_1fr]">
+          <div>
+            <p className="text-sm font-semibold uppercase tracking-[0.18em] text-slate-400">
+              Projects
+            </p>
+            <h2 className="mt-3 text-3xl font-bold tracking-tight">
+              프로젝트
+            </h2>
+          </div>
+
+          <div className="divide-y divide-slate-200 border-t border-slate-200">
+            {projects.map((project, index) => (
+              <article
+                className="grid gap-8 py-14 lg:grid-cols-[100px_1fr]"
+                key={project.title}
+              >
                 <div>
-                  <strong>{item.school}</strong>
-                  <p>
-                    {item.major} · {item.status}
+                  <span className="text-4xl font-bold tracking-[-0.05em] text-slate-200">
+                    {String(index + 1).padStart(2, '0')}
+                  </span>
+                  <p className="mt-3 text-sm leading-6 text-slate-400">
+                    {project.period}
                   </p>
                 </div>
-                <span>{item.period}</span>
+
+                <div>
+                  <div className="flex flex-col justify-between gap-6 sm:flex-row">
+                    <div>
+                      <h3 className="text-2xl font-bold tracking-tight text-slate-950">
+                        {project.title}
+                      </h3>
+                      <p className="mt-3 max-w-2xl leading-7 text-slate-500">
+                        {project.summary}
+                      </p>
+                    </div>
+
+                    {project.links && (
+                      <div className="flex shrink-0 flex-wrap gap-2">
+                        {project.links.map((link) => (
+                          <a
+                            href={link.href}
+                            key={link.href}
+                            target="_blank"
+                            rel="noreferrer"
+                            className="inline-flex h-10 items-center rounded-full border border-slate-300 px-4 text-sm font-semibold text-slate-700 transition hover:border-slate-900 hover:text-slate-950"
+                          >
+                            {link.label}
+                          </a>
+                        ))}
+                      </div>
+                    )}
+                  </div>
+
+                  <div className="mt-10 grid gap-5 lg:grid-cols-2">
+                    {project.details.map((detail) => (
+                      <div
+                        className="rounded-2xl border border-slate-200 p-6"
+                        key={detail.title}
+                      >
+                        <h4 className="font-bold text-slate-950">
+                          {detail.title}
+                        </h4>
+
+                        <ul className="mt-4 list-disc space-y-2 pl-5 text-sm leading-6 text-slate-600 marker:text-slate-300">
+                          {detail.items.map((item) => (
+                            <li key={item}>{item}</li>
+                          ))}
+                        </ul>
+                      </div>
+                    ))}
+                  </div>
+
+                  {project.learnings && (
+                    <div className="mt-6 rounded-2xl bg-slate-950 p-6 text-white">
+                      <strong className="text-sm font-semibold">
+                        프로젝트를 통해 배운 점
+                      </strong>
+
+                      <div className="mt-4 space-y-3 text-sm leading-7 text-slate-300">
+                        {project.learnings.map((learning) => (
+                          <p key={learning}>{learning}</p>
+                        ))}
+                      </div>
+                    </div>
+                  )}
+
+                  <ul
+                    className="mt-6 flex flex-wrap gap-2"
+                    aria-label="사용 기술"
+                  >
+                    {project.skills.map((skill) => (
+                      <li
+                        className="rounded-full bg-slate-100 px-3 py-1.5 text-xs font-semibold text-slate-600"
+                        key={skill}
+                      >
+                        {skill}
+                      </li>
+                    ))}
+                  </ul>
+                </div>
               </article>
             ))}
           </div>
         </div>
       </section>
 
-      <section className={styles.section} id="career">
-        <div className={styles.sectionHeading}>
-          <p className={styles.sectionLabel}>Career</p>
-          <h2>경력</h2>
+      <section
+        className="mx-auto grid max-w-6xl gap-10 border-b border-slate-200 px-6 py-24 md:grid-cols-[200px_1fr] md:px-10 lg:px-12"
+        id="skills"
+      >
+        <div>
+          <p className="text-sm font-semibold uppercase tracking-[0.18em] text-slate-400">
+            Skills
+          </p>
+          <h2 className="mt-3 text-3xl font-bold tracking-tight">기술</h2>
         </div>
 
-        <div className={styles.sectionContent}>
-          <article className={styles.careerCard}>
-            <div className={styles.careerHeader}>
-              <Image
-                src={`${basePath}${career.logo}`}
-                alt={`${career.company} 로고`}
-                width={200}
-                height={74}
-                className={styles.companyLogo}
-              />
-
-              <div className={styles.careerTitleGroup}>
-                <h3>{career.company}</h3>
-                <p>{career.previousName}</p>
-                <strong>
-                  {career.team} · {career.position}
-                </strong>
-              </div>
-
-              <p className={styles.period}>{career.period}</p>
-            </div>
-
-            <div className={styles.responsibilityGrid}>
-              {career.responsibilities.map((responsibility) => (
-                <div
-                  className={styles.responsibilityCard}
-                  key={responsibility.title}
-                >
-                  <h4>{responsibility.title}</h4>
-                  <ul>
-                    {responsibility.items.map((item) => (
-                      <li key={item}>{item}</li>
-                    ))}
-                  </ul>
-                </div>
-              ))}
-            </div>
-          </article>
-        </div>
-      </section>
-
-      <section className={styles.section} id="projects">
-        <div className={styles.sectionHeading}>
-          <p className={styles.sectionLabel}>Projects</p>
-          <h2>프로젝트</h2>
-        </div>
-
-        <div className={styles.projectList}>
-          {projects.map((project, index) => (
-            <article className={styles.projectCard} key={project.title}>
-              <div className={styles.projectAside}>
-                <span className={styles.projectNumber}>
-                  {String(index + 1).padStart(2, '0')}
-                </span>
-                <p className={styles.period}>{project.period}</p>
-              </div>
-
-              <div className={styles.projectBody}>
-                <div className={styles.projectHeader}>
-                  <div>
-                    <h3>{project.title}</h3>
-                    <p>{project.summary}</p>
-                  </div>
-
-                  {project.links && (
-                    <div className={styles.linkList}>
-                      {project.links.map((link) => (
-                        <a
-                          href={link.href}
-                          key={link.href}
-                          target="_blank"
-                          rel="noreferrer"
-                        >
-                          {link.label}
-                        </a>
-                      ))}
-                    </div>
-                  )}
-                </div>
-
-                <div className={styles.detailGrid}>
-                  {project.details.map((detail) => (
-                    <div className={styles.detailItem} key={detail.title}>
-                      <h4>{detail.title}</h4>
-                      <ul>
-                        {detail.items.map((item) => (
-                          <li key={item}>{item}</li>
-                        ))}
-                      </ul>
-                    </div>
-                  ))}
-                </div>
-
-                {project.learnings && (
-                  <div className={styles.learningBox}>
-                    <strong>프로젝트를 통해 배운 점</strong>
-                    {project.learnings.map((learning) => (
-                      <p key={learning}>{learning}</p>
-                    ))}
-                  </div>
-                )}
-
-                <ul className={styles.tagList} aria-label="사용 기술">
-                  {project.skills.map((skill) => (
-                    <li key={skill}>{skill}</li>
-                  ))}
-                </ul>
-              </div>
-            </article>
-          ))}
-        </div>
-      </section>
-
-      <section className={styles.section} id="skills">
-        <div className={styles.sectionHeading}>
-          <p className={styles.sectionLabel}>Skills</p>
-          <h2>기술</h2>
-        </div>
-
-        <div className={styles.skillGrid}>
+        <div className="grid gap-5 sm:grid-cols-2">
           {skills.map((skillGroup) => (
-            <article className={styles.skillCard} key={skillGroup.category}>
-              <h3>{skillGroup.category}</h3>
-              <ul>
+            <article
+              className="rounded-2xl border border-slate-200 p-6"
+              key={skillGroup.category}
+            >
+              <h3 className="text-lg font-bold text-slate-950">
+                {skillGroup.category}
+              </h3>
+
+              <ul className="mt-5 flex flex-wrap gap-2">
                 {skillGroup.items.map((item) => (
-                  <li key={item}>{item}</li>
+                  <li
+                    className="rounded-full bg-slate-100 px-3 py-1.5 text-sm text-slate-600"
+                    key={item}
+                  >
+                    {item}
+                  </li>
                 ))}
               </ul>
             </article>
@@ -219,19 +333,33 @@ export default function ResumePage() {
         </div>
       </section>
 
-      <section className={styles.closingSection}>
-        <p className={styles.sectionLabel}>More About Me</p>
-        <h2>이력서에 담지 못한 이야기</h2>
-        <div className={styles.closingCopy}>
-          {closing.map((paragraph) => (
-            <p key={paragraph}>{paragraph}</p>
-          ))}
+      <section className="bg-slate-950 px-6 py-24 text-white">
+        <div className="mx-auto max-w-4xl text-center">
+          <p className="text-sm font-semibold uppercase tracking-[0.18em] text-slate-400">
+            More About Me
+          </p>
+
+          <h2 className="mt-4 text-3xl font-bold tracking-tight sm:text-4xl">
+            이력서에 담지 못한 이야기
+          </h2>
+
+          <div className="mx-auto mt-10 max-w-3xl space-y-5 text-left text-base leading-8 text-slate-300 sm:text-center">
+            {closing.map((paragraph) => (
+              <p key={paragraph}>{paragraph}</p>
+            ))}
+          </div>
         </div>
       </section>
 
-      <footer className={styles.footer}>
-        <p>{profile.name}</p>
-        <a href={`mailto:${profile.email}`}>{profile.email}</a>
+      <footer className="flex flex-col items-center justify-between gap-3 border-t border-slate-800 bg-slate-950 px-6 py-8 text-sm text-slate-400 sm:flex-row sm:px-10 lg:px-12">
+        <p className="font-semibold text-white">{profile.name}</p>
+
+        <a
+          href={`mailto:${profile.email}`}
+          className="underline-offset-4 hover:text-white hover:underline"
+        >
+          {profile.email}
+        </a>
       </footer>
     </main>
   );
