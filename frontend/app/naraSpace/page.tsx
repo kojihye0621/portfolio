@@ -51,14 +51,6 @@ export default function ResumePage() {
           </div>
 
           <div className="mx-auto w-full max-w-95 overflow-hidden rounded-3xl bg-slate-100 md:mx-0">
-            <Image
-              src={`${basePath}${profile.image}`}
-              alt={`${profile.name} 프로필 사진`}
-              width={420}
-              height={520}
-              className="h-auto w-full object-cover"
-              priority
-            />
           </div>
         </div>
       </header>
@@ -121,7 +113,7 @@ export default function ResumePage() {
                       {item.school}
                     </strong>
                     <p className="mt-1 text-slate-500">
-                      {item.major} · {item.status}
+                      {/* {item.major} · {item.status} */}
                     </p>
                   </div>
 
