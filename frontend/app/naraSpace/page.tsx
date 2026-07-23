@@ -113,11 +113,11 @@ export default function ResumePage() {
                       {item.school}
                     </strong>
                     <p className="mt-1 text-slate-500">
-                      {/* {item.major} · {item.status} */}
+                      {item.major} · {item.status}
                     </p>
                   </div>
 
-                  <span className="text-sm text-slate-400">{item.period}</span>
+                  {/* <span className="text-sm text-slate-400">{item.period}</span> */}
                 </article>
               ))}
             </div>
